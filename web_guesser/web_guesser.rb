@@ -33,8 +33,14 @@ end
 get '/' do
 
 	guess = params['guess'].to_i
+	cheat_mode = params['cheat']
+	if cheat_mode == 'true' 
+		cheat = "The secret number is #{SECRET_NUM}"
+	else 
+		""
+	end
 	message = check_guess(guess)
 	background_color = change_bg_color(message)	
-	erb :index, :locals => { :secret_num => SECRET_NUM, :message => message, :background_color => background_color }
+	erb :index, :locals => { :secret_num => SECRET_NUM, :message => message, :background_color => background_color, :cheat => cheat }
 
 end
