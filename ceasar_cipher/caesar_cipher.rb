@@ -6,11 +6,13 @@ get "/" do
 end
 
 post "/" do
-	@cipher = ceasar_cipher(params[:text], params[:shift_factor].to_i)
-	erb :index
+	text = params["text"]
+	shift_factor = params["shift_factor"].to_i
+	cipher = caesar_cipher(text, shift_factor)
+	erb :index, :locals => { :cipher => cipher }
 end
 
-def ceasar_cipher(text, shift_factor)
+def caesar_cipher(text, shift_factor)
 	lower_case_letters = ('a'..'z').to_a
 	upper_case_letters = ('A'..'Z').to_a
 	ciphered_text = ""
@@ -25,10 +27,10 @@ def ceasar_cipher(text, shift_factor)
 		end
 		ciphered_text << letter
 	end
-	ciphered_text
+	puts ciphered_text
 end
 
-ceasar_cipher("What a string!", 5) # => "Bmfy f xywnsl!"
+caesar_cipher("What a string!", 5) # => "Bmfy f xywnsl!"
 
 # this method can be used to decipher the code orignally ciphered by the previous method
 
@@ -49,7 +51,7 @@ def decipher(text, shift_factor)
 
 	end
 
-	deciphered_text 
+	puts deciphered_text 
 
 end
 
