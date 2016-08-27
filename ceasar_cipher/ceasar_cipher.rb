@@ -10,6 +10,15 @@ post "/" do
 	erb :index
 end
 
+get "/decipher" do 
+	erb :decipher
+end
+
+post "/decipher" do
+	@text = decipher(params[:cipher], params[:shift_factor].to_i)
+	erb :decipher
+end
+
 def ceasar_cipher(text, shift_factor)
 	lower_case_letters = ('a'..'z').to_a
 	upper_case_letters = ('A'..'Z').to_a
