@@ -12,7 +12,24 @@ class UsersController < ApplicationController
         render :new
       end
   end
+
+  def edit
+  	@user = User.find(params[:id])
+  end
+
+
+  def update
+    @user = User.find(params[:id])
+    if 
+      @user.update(user_params)
+      flash.notice = "User '#{@user.username}' Updated!"
+      redirect_to edit_user_path(@user)
+    else
+      render :edit
+    end
+  end
 end
+
 
 private
 
