@@ -1,2 +1,2 @@
-require './Sinatra_hangman'
+require './sinatra_hangman'
 run Sinatra::Application
