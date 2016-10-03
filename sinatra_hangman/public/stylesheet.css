@@ -1,0 +1,22 @@
+/* body */
+
+body {
+	padding: 0px;
+	margin: 0px;
+	background-color: white;
+	text-align: center;
+	font-family: 'arial';
+}
+
+/* submit */ 
+
+#submit {
+	background-color: white;
+	border: 1px solid green;
+	width: 100px;
+	height: 25px;
+}
+
+#submit:hover {
+	background-color: #ebebeb;
+}

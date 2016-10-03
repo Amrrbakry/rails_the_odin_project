@@ -1,0 +1,10 @@
+
+<h1> <%= @hidden_word %> </h1>
+<h3> Wrong guesses: <%= @wrong_guesses.join(" ") %>  <br>
+tries left : <%= @tries %>
+</h3>
+<br> 
+<form method="POST" action="/">
+	Guess: <input type="text" name="guess" autofocus pattern="[A-Za-z]{1}" title="enter a single letter" size="1">	
+	<input type="submit" value="submit" id="submit">
+</form>
