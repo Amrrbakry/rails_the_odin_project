@@ -11,6 +11,7 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum: 6 }
 
   has_secure_password
+  has_many :posts
 
   # forgets a user
   def forget
@@ -19,20 +20,19 @@ class User < ApplicationRecord
 
   private
 
+    # remembers a user in the database for use in presistent sessions.
+    def remember
+      self.remember_token = User.digest(User.new_token)
+    end
+
   	# returns a random token
   	def User.new_token
   		SecureRandom.urlsafe_base64
   	end 
   	
-
   	# returns the hash digest of the given string
 		def User.digest(string)
     	Digest::SHA1.hexdigest(string.to_s)
-  	end
-
-    # remembers a user in the database for use in presistent sessions.
-  	def remember
-  		self.remember_token = User.digest(User.new_token)
   	end
 
 	  # converts email to downcase

@@ -1,0 +1,23 @@
+<div class="row" id="posts">
+	<div id="post-info">
+		<strong> <%= post.title.upcase %> </strong>
+	</div>
+
+	<hr>
+
+	<% if !logged_in? %>
+		<div id="post">
+				<%= post.body.truncate(300) %> <br> 
+				<%= link_to "Login to see full post & author's name", login_path %>
+		</div>
+	<% else %>
+		<div id="post">
+				<%= post.body%>
+		</div>
+		
+		<div id="author">
+			<strong>Written by: <%= post.user.name.capitalize %> </strong>
+		</div>
+	<% end %>
+
+</div>
