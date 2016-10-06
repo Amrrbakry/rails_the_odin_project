@@ -14,6 +14,11 @@ class User < ApplicationRecord
   has_secure_password
   has_many :microposts, dependent: :destroy
 
+  # defines a proto feed
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   # returns the hash digest of the given string
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
