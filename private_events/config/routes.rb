@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'events/new'
+
+  post 'events/create'
+
+  get 'events/show'
+
+  get '/events', to: 'events#index'
+
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'
 
   delete '/logout', to: 'sessions#destroy'
 
-	root 'users#new'
+	root 'events#index'
 
   get 'users/new'
 
@@ -14,6 +22,7 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
-  resources :users, only: [:new, :create, :show]
+  resources :users,   only: [:new, :create, :show]
+  resources :events,  only: [:new, :create, :show, :index]
 
 end
