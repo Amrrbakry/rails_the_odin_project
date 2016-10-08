@@ -1,11 +1,20 @@
 <li id="<%= event.id %>">
   <span class="title">
-    <%= event.title %>
+    <%= link_to event.title, event %>
   </span> <br>
-  <span class="content">
+  <span class="description">
   <%= event.description %>
   </span> <br>
-  <span class="event_creator"><%= link_to event.event_creator.name, event.event_creator %></span> 
+  <span class="location">
+  <%= event.location %>
+  </span> |
+  <span class="date">
+  <%= event.date %>
+  </span> <br>
+  <span class="event_creator">
+  Created by:
+  <%= link_to event.event_creator.name, event.event_creator %> 
+  </span> <br>
   <span class="timestamp">
     Posted <%= time_ago_in_words(event.created_at) %> ago.
   </span>

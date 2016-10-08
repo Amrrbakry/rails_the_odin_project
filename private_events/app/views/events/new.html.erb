@@ -7,5 +7,11 @@
   <%= f.label :description %>
   <%= f.text_area :description, class: 'form-control' %>
 
+  <%= f.label :location %>
+  <%= f.text_field :location, class: 'form-control' %>
+
+  <%= f.label :date %>
+  <%= f.datetime_field :date, class: 'form-control' %>
+
   <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>

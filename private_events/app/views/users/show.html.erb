@@ -1,7 +1,7 @@
 <h1> <%= @user.name %></h1>
 <% if @user.events.any? %>
 	<ol>
-		<%= render @events %>
+		<%= render @user.events %>
 	</ol>
 <% else %>
 	<p>This user hasn't created any events yet.
