@@ -1,1 +1,8 @@
 <h1> Created by: <%= @event.event_creator.name %> </h1>
+
+<ol>
+Attendees: 
+<% @event.attendees.each do |attendee| %>
+   <li><%= link_to attendee.name, attendee %></li>
+<% end %>
+</ol>

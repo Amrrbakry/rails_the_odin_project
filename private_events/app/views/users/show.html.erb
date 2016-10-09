@@ -4,5 +4,15 @@
 		<%= render @user.events %>
 	</ol>
 <% else %>
-	<p>This user hasn't created any events yet.
+	<p>This user hasn't created any events yet.</p>
+<% end %>
+
+Attending:
+
+<% if @user.invites.any? %>
+	<ol>
+		<%= render @user.attended_events %>
+	</ol>
+<% else %>
+	<p>This user is not attending any events.</p>
 <% end %>
