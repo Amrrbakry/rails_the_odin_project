@@ -1,5 +1,16 @@
 <h1>All Events</h1>
-
-<ul class="users">
- 	<%= render @events %> 
+<hr>
+<% if @events.any? %>
+<ul class="events">
+	<h2>Upcoming events:</h2>
+	<ol>
+ 			<%= render @upcoming_events %> 
+ 	</ol>
+ 	<h2>Past events:</h2>
+ 	<ol>
+ 		<%= render @previous_events %>
+ 	</ol>
 </ul>
+<% else %>
+	<h3>No events have been created yet.</h3>
+<% end %>

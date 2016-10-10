@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
+  get 'events/going'
+
   resources :users,   only: [:new, :create, :show]
   resources :events,  only: [:new, :create, :show, :index]
 

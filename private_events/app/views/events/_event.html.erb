@@ -9,7 +9,7 @@
   <%= event.location %>
   </span> |
   <span class="date">
-  <%= event.date %>
+  <%= event.date.strftime("%A, %d %b %Y %l:%M %p") %>
   </span> <br>
   <span class="event_creator">
   Created by:
@@ -19,3 +19,5 @@
     Posted <%= time_ago_in_words(event.created_at) %> ago.
   </span>
 </li>
+<hr class="event-divider">
+

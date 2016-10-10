@@ -18,6 +18,10 @@ module SessionsHelper
 		end
 	end
 
+	def forget(user)
+		session[:user_id] = nil
+	end
+
 	# returns true if user is logged in and false otherwise
 	def logged_in?
 		!current_user.nil?

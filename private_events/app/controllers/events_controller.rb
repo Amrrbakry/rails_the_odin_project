@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   def create
 	 @event = current_user.events.build(event_params)
   	if @event.save
+      @event.attendees << current_user
   		flash[:success] = "Event created successfully!"
   		redirect_to @event
   	else
@@ -16,12 +17,23 @@ class EventsController < ApplicationController
   	end
   end
 
+  def going 
+    @event = Event.find(params[:id])
+    if !@event.attendees.include?(current_user)
+      @event.attendees << current_user
+      flash[:success] = "You're now in the list of the attendees"
+    end
+    redirect_to @event
+  end
+
   def show
   	@event = Event.find(params[:id])
   end
 
   def index
   	@events = Event.all
+    @upcoming_events = Event.upcoming
+    @previous_events = Event.past
   end
 
   private
