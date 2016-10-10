@@ -1,4 +1,5 @@
 <h1> <%= @event.title %> </h1>
+<h3> <%= @event.description %> </h3>
 <% if !current_user.events.include?(@event) && !@event.attendees.include?(current_user) %>
 	<%= link_to "I'm Going to this event.", controller: "events", action: "going", id: @event %>
 <% end %>
