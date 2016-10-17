@@ -1,0 +1,23 @@
+<h1>Flights</h1>
+<div id="search">
+	<h3>Search flights:</h3>
+	<%= form_tag root_path, method: "GET" do %>
+		<%= hidden_field_tag :search %>
+		From: <%= select_tag(:start_airport_id, options_for_select(@airports_array, params[:from])) %>
+		To: <%= select_tag(:finish_airport_id, options_for_select(@airports_array, params[:to])) %>
+		Number of passengers: <%= select_tag(:passengers_num, options_for_select(@passengers_num, params[:passengers_num])) %>
+		Departure time: <%= select_tag(:flight_date, options_for_select(@flight_dates, params[:flight_date])) %> 
+		<%= submit_tag "search" %>
+	<% end %>
+</div>
+
+<% if params[:search] %>
+	<% if @flights.empty? %>
+		<p>No flights found </p>
+	<% else %>
+	<div class="search_results">
+		<div class="flights">
+			<%= render @flights %>
+	</div>
+	<% end %>
+<% end %>
