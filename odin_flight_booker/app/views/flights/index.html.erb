@@ -15,11 +15,14 @@
 	<% if @flights.empty? %>
 		<p>No flights found </p>
 	<% else %>
-	<div class="search_results">
-		<div class="flights">
-			<%= render @flights %>
-			<%= hidden_field_tag :passengers_num, params[:passengers_num] %> 
-			<%= submit_tag "Book this flight", name: nil %>
-	</div>
+		<%= form_tag(new_booking_path, method: "GET") do %>
+			<div class="search_results">
+				<div class="flights">
+					<%= render @flights %>
+					<%= hidden_field_tag :passengers_num, params[:passengers_num] %> 
+					<%= submit_tag "Book this flight", name: nil %>
+				</div>
+			</div>
+		<% end %>
 	<% end %>
 <% end %>

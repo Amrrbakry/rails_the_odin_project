@@ -1,6 +1,8 @@
 class Flight < ApplicationRecord
-	belongs_to :start_airport, class_name: "Airport"
-	belongs_to :finish_airport, class_name: "Airport"
+	belongs_to :start_airport,   class_name: "Airport"
+	belongs_to :finish_airport,  class_name: "Airport"
+  has_many :passengers,        through: :bookings
+  has_many :bookings,          dependent: :destroy
 
 	# returns array of arrays of all flight dates 
 	def self.flight_dates

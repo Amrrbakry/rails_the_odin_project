@@ -1,0 +1,20 @@
+
+<h1>Booking</h1>
+
+<p>
+  Thank you for booking your flight with Odin flight booker.  
+  Your confirmation # is <b><%= @booking.id %></b>.
+</p>
+
+<p>
+  Flight #<%= @booking.flight.id %>: <%= @booking.flight.start_airport.airport_code %> -> 
+  <%= @booking.flight.finish_airport.airport_code %> on 
+  <%= @booking.flight.start.strftime("%A, %B %d, %Y") %>.
+</p>
+
+<p>Passengers:</p>
+<ol>
+<% @booking.passengers.each do |passenger| %>
+ <li> <%="#{passenger.name} <#{passenger.email}>" %></li>
+<% end %>
+</ol>

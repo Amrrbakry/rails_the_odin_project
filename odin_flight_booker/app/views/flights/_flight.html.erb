@@ -1,5 +1,3 @@
-<div class="flights-form">
-<%= form_tag(controller: :bookings, action: :new, method: "GET") do %>
 	<div class="flight">
 		<%= radio_button_tag "flight_id", flight.id %>
 		<h3>Flight Number: <%= flight.id %> </h3>
@@ -10,5 +8,3 @@
 			<p>Flight duration: <%= flight.flight_duration %> </p>
 		</center>
 	</div>
-<% end %>
-</div>
