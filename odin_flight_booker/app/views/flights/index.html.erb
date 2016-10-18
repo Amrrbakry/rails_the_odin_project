@@ -18,6 +18,8 @@
 	<div class="search_results">
 		<div class="flights">
 			<%= render @flights %>
+			<%= hidden_field_tag :passengers_num, params[:passengers_num] %> 
+			<%= submit_tag "Book this flight", name: nil %>
 	</div>
 	<% end %>
 <% end %>

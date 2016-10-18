@@ -1,0 +1,14 @@
+<div class="flights-form">
+<%= form_tag(controller: :bookings, action: :new, method: "GET") do %>
+	<div class="flight">
+		<%= radio_button_tag "flight_id", flight.id %>
+		<h3>Flight Number: <%= flight.id %> </h3>
+		<center>
+			<h4>From: <%= flight.start_airport.airport_code %> </h4>
+			<h4>To: <%= flight.finish_airport.airport_code %> </h4>
+			<p>Departure time: <%= flight.start.strftime("%m/%d/%Y") %> </p>
+			<p>Flight duration: <%= flight.flight_duration %> </p>
+		</center>
+	</div>
+<% end %>
+</div>
