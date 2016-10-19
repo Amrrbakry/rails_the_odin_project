@@ -1,0 +1,4 @@
+<h1>Change your Kitten</h1>
+<%= link_to "give away kitten :(", @kitten, method: :delete,
+                                  data: { confirm: "You sure?" } %> <br> <br>
+<%= render 'new_kitten_form' %>
