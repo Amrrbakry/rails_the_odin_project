@@ -1,4 +1,5 @@
-<h3>Name: <%= kitten.name %> </h3>
+<% kitten_name = kitten.name %>
+<h3><%= link_to kitten_name, kitten_path(kitten) %> </h3>
 <h3>Age: <%= kitten.age %> </h3>
 <h3>Cuteness: <%= kitten.cuteness %> </h3>
 <h3>Softness: <%= kitten.softness %> </h3>
