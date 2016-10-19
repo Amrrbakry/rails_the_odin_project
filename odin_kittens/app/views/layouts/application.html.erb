@@ -9,13 +9,13 @@
   </head>
 
   <body>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message) %>
+    <% end %>
   	<h1>ODIN KITTENS </h1>
   	<nav>
   		<%= link_to "Kittens", kittens_path %>
   		<%= link_to "Get a kitten", new_kitten_path %>
-    <% flash.each do |message_type, message| %>
-      <%= content_tag(:div, message) %>
-    <% end %>
     <%= yield %>
   </body>
 </html>
