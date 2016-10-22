@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for flying with us, <%= @passenger.name %></h1>
+    <p>
+      You have successfully booked this flight: <br>
+      Flight #<%= @flight.id %> <br>
+      <strong> <%= @flight.start_airport.airport_code %> </strong>
+      >>
+      <strong> <%= @flight.finish_airport.airport_code %> </strong> <br>
+      Date: <%= @flight.start.strftime("%b %d, %Y") %>
+    </p>
+    <p>
+      To view more details about the flight, visit: <%= link_to "Odin Flight Booker", @url %>. 
+    </p>
+    <p>Have a safe trip.</p>
+  </body>
+</html>

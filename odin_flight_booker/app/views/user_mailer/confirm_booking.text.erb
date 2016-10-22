@@ -1,0 +1,14 @@
+Welcome to Odin Flight Booker, <%= @passenger.name %>
+===============================================
+ 
+You have successfully booked this flight:
+      You have successfully booked this flight: 
+      Flight #<%= @flight.id %> 
+      <%= @flight.start_airport.airport_code %>
+      >>
+      <%= @flight.finish_airport.airport_code %> 
+      Date: <%= @flight.start.strftime("%b %d, %Y") %>
+
+To view more details about the flight, visit: <%= @url %>. 
+
+Have a safe trip.
