@@ -22,9 +22,11 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
-  get 'events/going'
-
   resources :users,   only: [:new, :create, :show]
-  resources :events,  only: [:new, :create, :show, :index]
+  resources :events,  only: [:new, :create, :show, :index] do 
+    member do
+      get 'going' # going to the event
+    end
+  end
 
 end
