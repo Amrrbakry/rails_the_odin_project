@@ -1,0 +1,9 @@
+<h3> <%= pluralize(@pending_requests.count, "Notification") %>  </h3> 
+<hr> 
+<% @pending_requests.each do |pending_request| %>
+	<%= gravatar_for pending_request.friend %>
+	<%= link_to pending_request.friend.username, pending_request.friend, class: "add-friend" %>sent you a friend request. 
+	<br /> <br />
+	<%= render partial: "accept_friend_request", locals: { user: pending_request.friend } %>
+	<hr>
+<% end %> 

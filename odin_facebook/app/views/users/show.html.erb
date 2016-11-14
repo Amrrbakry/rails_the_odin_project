@@ -1,0 +1,17 @@
+<h1> <%= gravatar_for @user %> </h1>
+<h1> 
+<%= @user.username.titleize %> 
+</h1>
+<div class="friend-request">
+	<h4> <%= render partial: 'friend_form', locals: { user: @user } if user_signed_in? %> </h4>
+</div>
+<div class="col-md-4">
+<% if @user == current_user %>
+<aside class="new-post">
+	<%= render 'shared/post_form' %>
+</aside>
+<% end %>
+</div>
+<div class="col-md-4">
+	<%= render @posts %>
+</div>

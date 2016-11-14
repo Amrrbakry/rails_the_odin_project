@@ -1,0 +1,1 @@
+$("#friend_form-<%= @user.id %>").html("<%= escape_javascript(render partial: 'users/unfriend', locals: { user: @user }) %>");

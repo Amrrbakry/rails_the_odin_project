@@ -1,0 +1,12 @@
+<%= form_for @post, html: { multipart: true } do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<h3>
+		<%= gravatar_for @post.user %>
+		Write a new post
+	</h3>
+	<%= f.text_area :content, placeholder: "What's on your mind?", cols: 44, rows: 5 %> <br />
+	<%= f.label "picture-upload", "&#x1f4f7; add a picture".html_safe, class: "file-upload", id: "file" %>
+	<%= f.file_field :picture, accept: 'image/png,image/gif,image/jpeg', id: "post_picture-upload" %>
+	<hr>
+	<%= f.submit "Post", class: "submit" %>
+<% end %>

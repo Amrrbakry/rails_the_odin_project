@@ -1,0 +1,24 @@
+<ol id="all-comments">
+	<li>
+	<h4>
+	<%= gravatar_for comment.user, size: 50%>
+	<%= link_to comment.user.username, comment.user %>	
+	</h4>
+	<span class="comment-content">
+	<%= comment.content %> <br >
+	</span>
+	<div class="comment-picture">
+		<%= image_tag comment.comment_picture.url(:comment), class: "comment-picture" if comment.comment_picture.present? %>
+	</div>
+	<hr>
+	<span class="timestamp">
+		<%= link_to time_ago_in_words(comment.created_at) + " ago", comment.post %>
+	</span>
+	<span class="post-control">
+	<% if comment.user == current_user %>
+      <%= link_to "delete comment", post_comment_path(comment.post.id, comment.id), method: :delete,
+                                       data: { confirm: "You sure?" } %>
+	<% end %>
+	</span>
+	</li>
+</ol>

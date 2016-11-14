@@ -1,0 +1,47 @@
+<ol id="all-posts">
+	<li>
+	<h4>
+		<%= gravatar_for post.user, size: 60 %>
+		<%= link_to post.user.username, post.user %>
+	</h4>
+	<span class="post-content">
+	<%= post.content %> <br >
+	</span>
+	<div class="post-picture">
+		<%= image_tag post.picture.url(:timeline), class: "picture" if post.picture.present? %>	
+	</div>
+	<hr>
+	<div class="new-like">
+	<% if current_user.already_likes?(post) %>
+			<% 	unlike = post.likes.find_by(user_id: current_user.id) %>
+      <%= link_to "Unlike", post_like_path(post.id, unlike.id), method: :delete, class: "like" %>
+	<% else %>
+		<%=	link_to "Like", { controller: "likes", action: "create", user_id: current_user.id, post_id: post.id }, { method: :post } %>
+	<% end %> 
+	<span style="display:inline-block; width: 30;"></span>
+	<%= link_to "Comment", post, class: "like" %>
+	</div>
+	<hr>
+	<span class="likes-count">
+		<%= link_to pluralize(post.comments.count, 'comment'), post  if post.comments.count > 0 %>
+	</span>
+	<span class="likes-count">
+		<%= link_to pluralize(post.likes.count, "like"), post_likes_path(post) if post.likes.count > 0 %>
+	</span>
+	<% if post.comments.count > 0 || post.likes.count > 0 %>
+	<% else %>
+		<%= link_to "Be the first to like this", { controller: "likes", action: "create", user_id: current_user.id, post_id: post.id }, { method: :post } %> 
+	<hr> 
+	<% end %> <br />
+	<span class="timestamp">
+		<%= link_to time_ago_in_words(post.created_at) + " ago", post %>
+	</span>
+	<span class="post-control">
+	<% if post.user == current_user %>
+      <%= link_to "Delete post", post, method: :delete,
+                                       data: { confirm: "You sure?" } %> |
+  <%= link_to "Edit post", edit_post_path(post) %>
+	<% end %>
+	</span>
+	</li>
+</ol>

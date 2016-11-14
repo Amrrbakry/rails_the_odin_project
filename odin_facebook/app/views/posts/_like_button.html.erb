@@ -1,0 +1,7 @@
+<%= form_for @like, url: post_likes_path(@like.post) do |f| %>
+	<% if @likes.count > 0 %>
+		<%= f.submit "Like", class: "like" %>
+	<% else %>
+		<%= f.submit "Be the first to like this", class: "like" %>
+	<% end %>
+<% end %>

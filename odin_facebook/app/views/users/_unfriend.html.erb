@@ -1,0 +1,15 @@
+<% if current_user.inverse_friends?(user) %>
+	<%= form_for(current_user.inverse_friendships.find_by(user_id: user.id),
+		             html: { method: :delete },
+		             remote: true) do |f| %>
+		  <%= f.submit "Unfriend", class: "add-friend" %>
+	<% end %>
+<% else %>
+	<%= form_for(current_user.friendships.find_by(friend_id: user.id),
+		             html: { method: :delete },
+		             remote: true) do |f| %>
+		  <%= f.submit "Unfriend", class: "add-friend" %>
+	<% end %>
+<% end %>
+
+

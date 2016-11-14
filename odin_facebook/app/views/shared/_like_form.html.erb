@@ -1,0 +1,5 @@
+<% if current_user.already_likes?(@post) %>
+	<%= render './posts/unlike_button' %>
+<% else %>
+	<%= render './posts/like_button' %>
+<% end %> 

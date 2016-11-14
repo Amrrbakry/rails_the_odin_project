@@ -1,0 +1,10 @@
+<ul id="all-users-list">
+	<li>
+		<h3> 
+		<%= gravatar_for friend %>
+		<%= link_to friend.username.titleize, user %> 
+		</h3>
+		<h5> <%= friend.email %> </h5>
+	</li>
+	<hr>
+</ul>

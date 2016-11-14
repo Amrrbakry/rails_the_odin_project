@@ -1,0 +1,42 @@
+<div id="post" class="col-md-offset-3 col-md-6">
+<div id="post-top">
+<h2 class="text-left">
+	<%= gravatar_for @post.user %>
+	<%= link_to @post.user.username.titleize, @post.user %>	
+</h2>
+<div class="post-content">
+<%= @post.content %> 
+</div> <br />
+<div class="post-picture">
+	<%= image_tag @post.picture.url(:post), class: "picture" if @post.picture.present? %>	
+</div> <br />
+<span>
+<small>Posted <%= time_ago_in_words(@post.created_at) %> ago.</small>
+</span>
+<span class="post-control">
+<% if @post.user == current_user %>
+      <%= link_to "Delete post", @post, method: :delete,
+                                       data: { confirm: "You sure?" } %> |
+      <%= link_to "Edit post", edit_post_path(@post) %>
+<% end %>
+</span> <br /> <br />
+<hr>
+<div class="new-like">
+	<%= render 'shared/like_form' %>
+</div>	
+</div>
+<div class="comments">
+	<span class="likes-count">
+		<%= link_to pluralize(@likes.count, "like"), post_likes_path(@post) %>
+	</span>
+	<span style="display:inline-block; width: 70;"></span>
+	<span class="likes-count">
+		<%= pluralize(@post.comments.count, 'comment') if @post.comments.count > 0 %>
+	</span>
+
+	<%= render @comments %>
+</div>
+<div class="new-comment">
+	<%= render 'shared/comment_form' %>
+</div>
+</div>

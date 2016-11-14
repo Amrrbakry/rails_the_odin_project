@@ -1,0 +1,13 @@
+<% unless current_user == user %>
+  <div id="friend_form-<%= user.id %>">
+  <% if current_user.friends?(user) || current_user.inverse_friends?(user) %>
+    <%= render partial: 'unfriend', locals: { user: user } %>
+  <% elsif current_user.friend_requested?(user) %>
+  	<%= render partial: 'request_sent', locals: { user: user } %>
+  <% elsif current_user.has_pending_request_from?(user) %>
+  		<%= render partial: 'accept_friend_request', locals: { user: user } %>
+ 	<% else %>
+    <%= render partial: 'add_friend', locals: { user: user } %>
+  <% end %>
+  </div>
+<% end %>

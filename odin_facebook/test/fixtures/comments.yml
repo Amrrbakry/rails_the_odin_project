@@ -1,0 +1,10 @@
+one:
+  content: MyText
+  user_id: 1
+  post_id: 1
+
+three:
+  content: sdasda
+  user_id: 2
+  post_id: 1
+

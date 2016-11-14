@@ -1,0 +1,7 @@
+<%= form_for @comment, url: post_comments_path(@comment.post), html: { multipart: true } do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<%= f.text_area :content, placeholder: "Write a comment...", cols: 60,rows: 3 %> <br /> 
+	<%= f.label "picture-upload", "&#x1f4f7; add a picture".html_safe, class: "file-upload" %>
+	<%= f.file_field :comment_picture, accept: 'image/png,image/gif,image/jpeg', id: "comment_picture-upload" %><br />
+	<%= f.submit "comment", class: "submit" %>
+<% end %>
